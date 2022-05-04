@@ -2,23 +2,27 @@ import React, { Component } from "react";
 
 import { Bar, Doughnut } from "react-chartjs-2";
 
+import { SideNav } from "../../components/side-nav";
+
 // css
 import styles from "../../styles/Dashboard.module.css";
 
 // JSON dummy data until i setup APIS
-import JsonData from "./chartData1.JSON";
+import JsonData from "../../components/chartData1.JSON";
 
 // Modules
 import StockChart from "../../components/chart";
-import { barOptions, barData } from "./barChart";
-import { doData } from "./doughnut";
+import { barOptions, barData } from "../../components/barChart";
+import { doData } from "../../components/doughnut";
 
 export default function Dashboard() {
   return (
-    <div className={styles.container}>
-      <div className="grid grid-cols-3 gap-2 p-5">
+    <>
+    <SideNav></SideNav>
+    <div className="pl-20 pr-10">
+      <div className="grid grid-cols-3 gap-4 p-5">
         <div className="shadow-lg bg-green-50 text-slate-900 text-lg font-bold text-center p-10 rounded-lg col-span-3 row-span-2">
-          <Bar options={barOptions} data={barData} />
+          <Bar className="h-15" options={barOptions} data={barData} />
         </div>
         <div className="shadow-lg bg-green-50 text-slate-900 text-lg font-bold text-center p-10 rounded-lg col-span-2 row-span-2">
           <Doughnut data={doData} />
@@ -31,5 +35,6 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+    </>
   );
 }

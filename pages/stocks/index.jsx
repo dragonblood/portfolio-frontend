@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SideNav } from "../../components/side-nav";
 
 import {
   Chart as ChartJS,
@@ -16,7 +17,8 @@ import faker from "faker";
 import styles from "../../styles/Dashboard.module.css";
 
 // JSON dummy data until i setup APIS
-import JsonData from "./dataChart1.JSON";
+import JsonData from "../../components/chartData1.JSON";
+
 
 // Modules
 import StockChart from "../../components/chart";
@@ -73,8 +75,10 @@ export const data = {
 
 export default function Stocks() {
   return (
-    <div className={styles.container}>
-      <div className="grid grid-cols-3 gap-1 p-5">
+    <>
+    <SideNav></SideNav>
+    <div className="pl-20 pr-10">
+      <div className="grid grid-cols-3 gap-3 p-5">
         <div className="rounded-lg">
           <StockChart className="shadow-lg" info={JsonData} />
         </div>
@@ -95,5 +99,6 @@ export default function Stocks() {
 
       {/* </div> */}
     </div>
+    </>
   );
 }

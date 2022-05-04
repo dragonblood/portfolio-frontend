@@ -27,7 +27,7 @@ export default NextAuth({
       if (url === "/user") {
         return Promise.resolve("/");
       }
-      return Promise.resolve("/");
+      return Promise.resolve("/mutual-funds");
     },
   },
 });
