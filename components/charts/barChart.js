@@ -19,6 +19,7 @@ ChartJS.register(
 );
 
 export const barOptions = {
+  maintainAspectRatio: false,
   plugins: {
     title: {
       display: true,

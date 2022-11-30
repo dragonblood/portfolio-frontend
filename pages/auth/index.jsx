@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import GoogleProvider from "next-auth/providers/google";
+import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import styles from "../../styles/Auth.module.css";
-import { SideNav } from "../../components/side-nav";
 
 export default function Auth() {
   const { data: session } = useSession();
@@ -18,9 +16,8 @@ export default function Auth() {
     );
   }
   return (
-    <div className={styles.container}>
-      <h2 className={styles.header}>Please Login to Access Portfolio</h2>
-      <h3>This app is currently in alpha</h3>
+    <>
+      {/*<h2 className={styles.header}>Please Login to Access Portfolio</h2>*/}
       <form className={styles.form} onSubmit="return false" autoComplete="off">
         <div className={styles.forminner}>
           <h2>User Login</h2>
@@ -71,6 +68,6 @@ export default function Auth() {
           </div>
         </div>
       </form>
-    </div>
+     </>
   );
 }
