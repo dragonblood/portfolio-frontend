@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 export function SideNav() {
-  const router = useRouter();
+  const router = usePathname();
 
   const active =
     "flex items-center justify-center w-12 h-12 mt-2 rounded text-gray-200 bg-gray-700";
@@ -30,7 +30,7 @@ export function SideNav() {
           </a>
           <div className="mt-3 flex flex-col items-center border-t border-gray-700">
             <a
-              className={router.pathname === "/dashboard" ? active : inactive}
+              className={router === "/dashboard" ? active : inactive}
               href="/dashboard"
             >
               <svg
@@ -49,7 +49,7 @@ export function SideNav() {
               </svg>
             </a>
             <a
-              className={router.pathname === "/stocks" ? active : inactive}
+              className={router === "/stocks" ? active : inactive}
               href="/stocks"
             >
               <svg
@@ -69,7 +69,7 @@ export function SideNav() {
               {/* <i class="fa fa-line-chart" aria-hidden="true"></i> */}
             </a>
             <a
-              className={router.pathname === "/crypto" ? active : inactive}
+              className={router === "/crypto" ? active : inactive}
               href="/crypto"
             >
               <svg
@@ -89,7 +89,7 @@ export function SideNav() {
             </a>
             <a
               className={
-                router.pathname === "/mutual-funds" ? active : inactive
+                router === "/mutual-funds" ? active : inactive
               }
               href="/mutual-funds"
             >
@@ -117,7 +117,7 @@ export function SideNav() {
           </div>
           <div className="mt-2 flex flex-col items-center border-t border-gray-700">
             <a
-              className={router.pathname === "/expenses" ? active : inactive}
+              className={router === "/expenses" ? active : inactive}
               href="/expenses"
             >
               <svg
@@ -136,7 +136,7 @@ export function SideNav() {
               </svg>
             </a>
             <a
-              className={router.pathname === "/news" ? active : inactive}
+              className={router === "/news" ? active : inactive}
               href="/news"
             >
               <svg
@@ -155,7 +155,7 @@ export function SideNav() {
               </svg>
             </a>
             <a
-              className={router.pathname === "/prediction" ? active : inactive}
+              className={router === "/prediction" ? active : inactive}
               href="/prediction"
             >
               <svg
@@ -175,7 +175,7 @@ export function SideNav() {
             </a>
           </div>
           <a
-            className={router.pathname === "/auth" ? active : inactive}
+            className={router === "/auth" ? active : inactive}
             href="/auth"
           >
             <svg
