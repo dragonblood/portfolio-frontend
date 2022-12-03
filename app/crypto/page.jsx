@@ -4,21 +4,57 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import styles from "../../styles/Crypto.module.css";
-import { Doughnut } from "react-chartjs-2";
-import { doData } from "../../components/charts/doughnut";
+import { Bar, Doughnut } from "react-chartjs-2";
+import { doData, doOptions } from "../../components/charts/doughnut";
+import { barData, barOptions } from "../../components/charts/barChart";
 
 export default function Crypto() {
+  const cryptoData ={
+    total: 100;
+    pnl: 10;
+
+  };
   return (
     <section className="">
       <div className="grid grid-cols-3 gap-4">
-        <div className="bg-indigo-600 col-span-2 h-48 rounded">
 
-        </div>
-        <div className="bg-indigo-600">
-          <Doughnut data={doData} width={100} height={50} options={{ maintainAspectRatio: false }}/>
-        </div>
 
-        <div className="bg-indigo-600 col-span-3">
+
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card card-body">
+              <h1 className="mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Total</h1>
+              <h1 className="self-center mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{cryptoData.total}</h1>
+            </div>
+          </div>
+          <div className="card bg-base-100 shadow-xl">
+            <div className="card card-body">
+              <h1 className="mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">P&L</h1>
+              <h1 className="self-center mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{cryptoData.pnl}</h1>
+            </div>
+          </div>
+          <div className="card bg-base-100 shadow-xl">
+              <div className="card card-body">
+                <h1 className="mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{cryptoData.name}</h1>
+                <h2 className="card-title"></h2>
+                <p>
+                  {/*{coin.symbol}*/}
+                  <br />
+                  {/*{coin.amount}*/}
+                  <br />
+                  {/*{coin.price}*/}
+                </p>
+                <div className="card-actions justify-end"></div>
+              </div>
+            </div>
+
+
+        <div className="col-span-2 row-span-2 rounded-lg bg-green-50 p-10 text-center text-lg font-bold text-slate-900 shadow-lg h-30">
+          <Bar className="{styles.mainBar}" options={barOptions}  data={barData} height={500}/>
+        </div>
+        <div className="row-span-2 rounded-lg bg-green-50 p-10 text-center text-lg font-bold text-slate-900 shadow-lg h-30">
+          <Doughnut className="{styles.mainBar}" data={doData} width={100} height={500} options={doOptions}/>
+        </div>
+        <div className="col-span-3">
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
             <ListCrypto />
           </div>

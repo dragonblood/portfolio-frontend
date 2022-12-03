@@ -3,9 +3,6 @@
 import React, { Component } from "react";
 import { Bar, Doughnut } from "react-chartjs-2";
 
-// Modules
-// import { SideNav } from "../../components/nav/side-nav";
-// import StockChart from "../../components/chart";
 import { barOptions, barData } from "../../components/charts/barChart";
 import { doData } from "../../components/charts/doughnut";
 import CardStats from "../../components/card/CardStats.js";

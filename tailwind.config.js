@@ -4,6 +4,8 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "./app/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{ts,tsx}",
+    "./public/**/*.html",
   ],
   theme: {
     darkMode: 'class',

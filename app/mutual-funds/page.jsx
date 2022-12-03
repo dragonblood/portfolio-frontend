@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Bar, Doughnut } from "react-chartjs-2";
 
-import { doData } from "../../components/charts/doughnut";
+import { doData, doOptions } from "../../components/charts/doughnut";
 import styles from "../../styles/MutualFunds.module.css";
 
 export default function MutualFunds() {
@@ -11,7 +11,7 @@ export default function MutualFunds() {
         <section className="">
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-indigo-600 col-span-2 h-48 rounded">
-                <Doughnut data={doData} width={100} height={50} options={{ maintainAspectRatio: false }}/>
+                <Doughnut data={doData} options={doOptions} width={100} height={50}/>
               </div>
               <div className="bg-indigo-600">02</div>
 

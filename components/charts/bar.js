@@ -30,6 +30,7 @@ const buildData = ({ chartData }) => ({
 });
 
 const options = {
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: false,

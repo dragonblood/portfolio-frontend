@@ -28,3 +28,7 @@ export const doData = {
     },
   ],
 };
+
+export const doOptions = {
+  maintainAspectRatio: false,
+};
