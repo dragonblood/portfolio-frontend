@@ -5,28 +5,57 @@ import { Line } from "react-chartjs-2";
 import { lineData, lineOptions } from "../../../components/charts/line";
 import styles from "../../../styles/Crypto.module.css";
 
-const GetCrypto = (crypto) => {
-  const [Crypto, setCrypto] = useState([]);
+function MyComponent(crypto) {
+  // Declare a state variable for storing the API response
+  const [response, setResponse] = useState(null);
+
+  // Declare a state variable for storing any errors
+  const [error, setError] = useState(null);
+
+  // Use the useEffect hook to make the API call when the component is mounted
   useEffect(() => {
-    const fetchCryptoData = async () => {
-      const cryptoList = await fetch(
-        "http://127.0.0.1:8000/crypto/crypto/" + crypto,
-        {
-          next: { revalidate: 10 },
-        }
-      );
-      debugger;
-      const Cryptos = await cryptoList.json();
-      setCrypto(Cryptos);
-    };
-    fetchCryptoData();
+
   }, []);
 
-  return Crypto;
+  // If there is a response, render it, otherwise render an error message
+
+}
+
+const GetCoin = (crypto) => {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchCryptoData = async () => {
+    try {
+      fetch("http://127.0.0.1:8000/crypto/coins/" + crypto, {
+        next: { revalidate: 100 },
+      })
+        .then(res => res.json())
+        .then(data => setResponse(data))
+        .catch(err => setError(err));
+      // setCrypto(Cryptos);
+    } catch (error) {
+      console.log("error while fetching: "+error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCryptoData().then((Crypto) => {
+      return Crypto;
+    });
+  }, [response]);
+
+  if (response) {
+    return <p>{response}</p>;
+  } else if (error) {
+    return <p>Error: {error.message}</p>;
+  } else {
+    return <p>Loading...</p>;
+  }
 };
 
-export default function NotePage({ params }) {
-  const coin = GetCrypto(params.id);
+export default function CoinPage({ params }) {
+  const coin = GetCoin(params.id);
   return (
     <>
       <div className="grid grid-cols-3 gap-4">
@@ -47,13 +76,7 @@ export default function NotePage({ params }) {
             <div className="card card-body">
               <h1 className="mb-1 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white">{coin.name}</h1>
               <h2 className="card-title"></h2>
-              <p>
-                {coin.symbol}
-                <br />
-                {coin.amount}
-                <br />
-                {coin.price}
-              </p>
+
               <div className="card-actions justify-end"></div>
             </div>
           </div>
@@ -155,6 +178,23 @@ export default function NotePage({ params }) {
               </Table.Row>
             </Table.Body>
           </Table>
+        </div>
+        <div className="p-5">
+          <p>
+            Symbol: {coin.symbol}
+            <br />
+            Amount: {coin.amount}
+            <br />
+            Price:  {coin.price}
+            <br />
+            Market Cap: {coin.market_cap_usd}
+            <br />
+            Supply: {coin.available_supply}
+            <br />
+            Total Supply: {coin.total_supply}
+            <br />
+            {coin.last_updated}
+          </p>
         </div>
       </div>
     </>
